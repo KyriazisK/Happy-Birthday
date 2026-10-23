@@ -451,38 +451,38 @@ html, body {
 
 .cake {
   position: relative;
-  width: 280px;
-  min-height: 220px;
+  width: 240px;
+  min-height: 195px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
-  margin-bottom: 25px;
-  padding-bottom: 8px;
+  margin-bottom: 20px;
+  padding-bottom: 6px;
 }
 
 .cake-plate {
   position: absolute;
   bottom: 0px;
-  width: 290px;
-  height: 18px;
+  width: 250px;
+  height: 16px;
   background: linear-gradient(to right, #cfd8dc, #eceff1, #b0bec5);
   border-radius: 50%;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.6);
   z-index: 1;
 }
 
 .layer {
   position: relative;
-  box-shadow: inset 0 -4px 6px rgba(0, 0, 0, 0.15);
+  box-shadow: inset 0 -3px 5px rgba(0, 0, 0, 0.15);
 }
 
 .layer-top {
-  width: 130px;
-  height: 48px;
+  width: 110px;
+  height: 40px;
   background: linear-gradient(to bottom, #fff9c4, #fff176);
   border: 2px solid #fbc02d;
-  border-radius: 12px 12px 0 0;
+  border-radius: 10px 10px 0 0;
   z-index: 5;
   display: flex;
   align-items: center;
@@ -491,14 +491,14 @@ html, body {
 
 .cake-topper-text {
   font-family: 'Caveat', cursive;
-  font-size: 24px;
+  font-size: 20px;
   color: #6a4c28;
   font-weight: 700;
 }
 
 .layer-middle {
-  width: 185px;
-  height: 52px;
+  width: 160px;
+  height: 46px;
   background: linear-gradient(to bottom, #fce4ec, #f8bbd0);
   border: 2px solid #ec407a;
   border-top: none;
@@ -506,8 +506,8 @@ html, body {
 }
 
 .layer-bottom {
-  width: 245px;
-  height: 60px;
+  width: 215px;
+  height: 54px;
   background: linear-gradient(to bottom, #d48b96, #b05c6a);
   border: 2px solid #8e4451;
   border-top: none;
@@ -519,7 +519,7 @@ html, body {
 .candles-row {
   position: relative;
   display: flex;
-  gap: 22px;
+  gap: 18px;
   z-index: 10;
   margin-bottom: -4px;
   cursor: pointer;
@@ -632,19 +632,20 @@ html, body {
 }
 
 /* ==========================================================================
-   STEP 3: The Birthday Card & Upbeat Celebration
+   STEP 3: The Birthday Card & Upbeat Celebration (Compact & Minimal)
    ========================================================================== */
 .letter-card-wrapper {
   width: 100%;
+  max-width: 440px;
 }
 
-.letter-card {
+.letter-card.compact-card {
   background: var(--paper-cream);
   color: var(--text-main);
   border-radius: 18px;
-  padding: clamp(26px, 5vw, 45px);
-  text-align: left;
-  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.65), 0 0 35px rgba(246, 211, 101, 0.15);
+  padding: 26px 24px 22px;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.65), 0 0 30px rgba(246, 211, 101, 0.15);
   border: 1px solid var(--paper-border);
   position: relative;
   overflow: hidden;
@@ -656,164 +657,73 @@ html, body {
   top: 0;
   left: 0;
   right: 0;
-  height: 6px;
+  height: 5px;
   background: linear-gradient(90deg, var(--gold-primary), var(--gold-secondary), #ff8da1);
 }
 
-.letter-header {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  padding-bottom: 18px;
-  margin-bottom: 22px;
-  position: relative;
+.compact-header {
+  margin-bottom: 14px;
 }
 
-.stamp-box {
-  position: absolute;
-  top: 0;
-  right: 0;
-  border: 2px dashed #b59b7c;
-  padding: 6px 12px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: #fdfaf3;
-  transform: rotate(3deg);
-}
-
-.stamp-icon {
-  font-size: 18px;
-}
-
-.stamp-date {
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: #8c7355;
-  font-weight: 600;
-}
-
-.letter-pre-title {
-  font-size: 13px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: #9c8a79;
-  margin-bottom: 6px;
-}
-
-.letter-recipient {
+.compact-header .letter-recipient {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(26px, 4.5vw, 34px);
+  font-size: clamp(23px, 4.5vw, 28px);
   font-weight: 700;
   color: #1a162b;
 }
 
-.letter-body {
-  font-size: clamp(15px, 2.2vw, 17px);
-  line-height: 1.75;
-  color: #3d3731;
+.compact-body {
+  font-size: clamp(14px, 2.5vw, 16px);
+  line-height: 1.65;
+  color: #443c36;
 }
 
-.letter-p {
-  margin-bottom: 16px;
+.compact-body .letter-p {
+  margin-bottom: 0;
 }
 
-.letter-p.highlight-p {
-  font-size: 1.15em;
+.compact-footer {
+  margin-top: 14px;
+  padding-top: 10px;
+  border-top: 1px dashed rgba(0,0,0,0.1);
+}
+
+.compact-footer .signature-tag {
+  font-size: 15px;
+  color: #55483e;
   font-weight: 600;
-  color: #1a162b;
 }
 
-.letter-p.closing {
-  font-weight: 500;
-  color: #2c2520;
-}
-
-.letter-footer {
-  margin-top: 24px;
-  padding-top: 16px;
-  border-top: 1px dashed rgba(0,0,0,0.12);
-}
-
-.handwritten-sign {
-  font-family: 'Caveat', cursive;
-  font-size: 28px;
-  color: #4a3e35;
-  margin-bottom: 2px;
-}
-
-.signature-tag {
-  font-size: 14px;
-  color: #8c7b6f;
-  font-weight: 500;
-}
-
-/* Fun Celebration Buttons */
-.fun-actions-section {
-  margin-top: 28px;
-  background: #f3eee6;
-  border-radius: 12px;
-  padding: 18px 20px;
-  border: 1px solid #e5dac9;
-}
-
-.fun-actions-title {
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: #7d6b5c;
-  margin-bottom: 12px;
-}
-
-.fun-buttons-grid {
+/* Compact Buttons Grid */
+.compact-grid {
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 18px;
 }
 
-.fun-btn {
+.compact-grid .fun-btn {
   background: #fff;
   border: 1px solid #d4c5ae;
-  padding: 9px 16px;
-  border-radius: 25px;
+  padding: 7px 14px;
+  border-radius: 20px;
   font-family: inherit;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
   color: #4a3c30;
   cursor: pointer;
   transition: all 0.25s ease;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
 }
 
-.fun-btn:hover {
+.compact-grid .fun-btn:hover {
   background: var(--gold-primary);
   border-color: var(--gold-primary);
   color: #1a162b;
   transform: translateY(-2px);
-  box-shadow: 0 4px 14px rgba(246, 211, 101, 0.4);
-}
-
-.action-footer {
-  margin-top: 25px;
-  text-align: center;
-}
-
-.restart-btn {
-  background: transparent;
-  border: 1px solid #c2b19b;
-  color: #7a6857;
-  padding: 8px 20px;
-  border-radius: 20px;
-  font-size: 13px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.restart-btn:hover {
-  background: #e2d2bd;
-  color: #33261a;
+  box-shadow: 0 4px 12px rgba(246, 211, 101, 0.35);
 }
 
 /* ==========================================================================
