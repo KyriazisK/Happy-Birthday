@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Happy Birthday, Irene! ✨</title>
+  
+  <!-- Meta tags for social sharing preview -->
+  <meta name="description" content="A special birthday wish for Irene ✨">
+  <meta property="og:title" content="Happy Birthday, Irene! ✨">
+  <meta property="og:description" content="A special little something made just for your birthday.">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Background canvas for starry sky & glowing floating motes -->
+  <canvas id="sky-canvas"></canvas>
+
+  <!-- Sound Toggle / Vinyl Player Widget -->
+  <div class="vinyl-widget" id="vinylWidget" title="Click to play / pause music">
+    <div class="vinyl-record" id="vinylRecord">
+      <div class="vinyl-grooves"></div>
+      <div class="vinyl-label">
+        <span class="music-icon">🎵</span>
+      </div>
+    </div>
+    <div class="tonearm" id="toneArm"></div>
+    <div class="music-status">
+      <span class="music-title">Birthday Melody</span>
+      <span class="music-hint" id="musicHint">Tap to Play ♫</span>
+    </div>
+  </div>
+
+  <!-- Main Container / Experience Flow -->
+  <main class="experience-container">
+
+    <!-- STEP 1: The Sealed Envelope -->
+    <section class="step-section active" id="stepEnvelope">
+      <div class="envelope-intro">
+        <span class="sparkle-badge">✨ October Special ✨</span>
+        <h1 class="glow-title">A Little Something for Irene</h1>
+        <p class="envelope-subtitle">Delivered across time and space, just for your special day.</p>
+      </div>
+
+      <div class="envelope-wrapper" id="envelopeWrapper">
+        <div class="envelope" id="envelope">
+          <div class="envelope-back"></div>
+          
+          <div class="letter-peek" id="letterPeek">
+            <span class="peek-text">Open Me</span>
+          </div>
+
+          <div class="envelope-pocket"></div>
+          <div class="envelope-flap" id="envelopeFlap"></div>
+
+          <!-- Wax Seal -->
+          <div class="wax-seal" id="waxSeal" title="Click to break the seal and open">
+            <div class="wax-seal-inner">
+              <span class="seal-letter">I</span>
+            </div>
+            <div class="seal-glow"></div>
+          </div>
+        </div>
+        <p class="tap-hint"><span class="touch-icon">👆</span> Tap the seal to open</p>
+      </div>
+    </section>
+
+    <!-- STEP 2: The Interactive Birthday Cake -->
+    <section class="step-section" id="stepCake">
+      <div class="cake-intro">
+        <h2 class="section-title">Make a Wish, Irene 🎂</h2>
+        <p class="section-desc" id="cakeHint">Close your eyes, think of something you truly wish for, and tap the candles to blow them out!</p>
+      </div>
+
+      <div class="cake-container" id="cakeContainer">
+        <!-- The 3D CSS Birthday Cake -->
+        <div class="cake">
+          <!-- Plate -->
+          <div class="cake-plate"></div>
+
+          <!-- Cake Layers -->
+          <div class="layer layer-bottom">
+            <div class="frosting-drips"></div>
+          </div>
+          <div class="layer layer-middle">
+            <div class="frosting-drips"></div>
+          </div>
+          <div class="layer layer-top">
+            <div class="cake-topper-text">Irene</div>
+          </div>
+
+          <!-- Candles -->
+          <div class="candles-row" id="candlesRow">
+            <div class="candle" data-index="1">
+              <div class="candle-stick"></div>
+              <div class="wick"></div>
+              <div class="flame"></div>
+              <div class="smoke"></div>
+            </div>
+            <div class="candle candle-tall" data-index="2">
+              <div class="candle-stick"></div>
+              <div class="wick"></div>
+              <div class="flame"></div>
+              <div class="smoke"></div>
+            </div>
+            <div class="candle" data-index="3">
+              <div class="candle-stick"></div>
+              <div class="wick"></div>
+              <div class="flame"></div>
+              <div class="smoke"></div>
+            </div>
+          </div>
+        </div>
+
+        <button class="blow-btn" id="blowBtn">
+          <span>💨 Tap Here to Blow Out the Candles!</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- STEP 3: The Birthday Card & Heartfelt Letter -->
+    <section class="step-section" id="stepLetter">
+      <div class="letter-card-wrapper">
+        <div class="letter-card">
+          <!-- Elegant Letter Header -->
+          <div class="letter-header">
+            <div class="stamp-box">
+              <span class="stamp-icon">🕊️</span>
+              <span class="stamp-date">Happy Birthday</span>
+            </div>
+            <div class="letter-pre-title">Warmest wishes on your day</div>
+            <h2 class="letter-recipient">Dearest Irene,</h2>
+          </div>
+
+          <!-- Letter Body -->
+          <div class="letter-body">
+            <p class="letter-p">
+              <strong>Happy Birthday! 🎉</strong>
+            </p>
+            <p class="letter-p">
+              I wanted to take a moment today to send a little sunshine your way and wish you the very happiest of birthdays.
+            </p>
+            <p class="letter-p">
+              Even though time and life have moved forward since we last talked, I genuinely look back on the conversations, laughs, and moments we shared with a big smile. You are someone truly special, bright, and memorable, and you brought real warmth and energy into those days.
+            </p>
+            <p class="letter-p">
+              As you turn this new page and step into another year of your life, I hope it brings you everything you’ve been hoping for — exciting new adventures, peace of mind, endless reasons to laugh, and people around you who cherish you for the wonderful soul you are.
+            </p>
+            <p class="letter-p">
+              May today be overflowing with your favorite music, great food, sweet surprises, and all the love you deserve.
+            </p>
+            <p class="letter-p closing">
+              Wishing you nothing but genuine happiness, health, and success — today and always.
+            </p>
+          </div>
+
+          <!-- Letter Footer -->
+          <div class="letter-footer">
+            <p class="handwritten-sign">With all my best wishes,</p>
+            <p class="signature-tag">Always rooting for you ✨</p>
+          </div>
+
+          <!-- Interactive Lanterns / Wishes Feature -->
+          <div class="lantern-section">
+            <div class="lantern-intro">
+              <span class="lantern-badge">Release a Sky Lantern</span>
+              <p>Click below to send a glowing birthday wish into the night sky for Irene:</p>
+            </div>
+            <div class="lantern-actions">
+              <button class="lantern-btn" data-wish="May your year be full of magic and peace ✨">🌟 Peace & Calm</button>
+              <button class="lantern-btn" data-wish="May you achieve every dream you're chasing 🚀">💫 Big Dreams</button>
+              <button class="lantern-btn" data-wish="May laughter and joy find you every single day 💛">✨ Pure Joy</button>
+              <button class="lantern-btn" data-wish="May wonderful adventures and good people surround you 🌸">🍃 Beautiful Days</button>
+            </div>
+            <div class="lantern-counter" id="lanternCounter">0 lanterns floating in the sky</div>
+          </div>
+
+          <!-- Replay Button -->
+          <div class="action-footer">
+            <button class="restart-btn" id="restartBtn">↺ Relive from the Start</button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Floating Sky Lanterns Container -->
+  <div id="skyLanternsContainer"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
