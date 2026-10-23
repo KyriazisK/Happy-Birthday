@@ -14,12 +14,12 @@ A bespoke, starlit birthday website crafted for Irene. Built with modern HTML5, 
    - Realistic flickering candle flames with glowing ambient light.
    - Irene can tap the individual candles or click the "Blow Out Candles" button to make a wish, triggering smoke drift effects and a grand celebration confetti cascade!
 
-3. **The Heartfelt Birthday Letter**:
-   - An elegant, warm, and zero-pressure birthday note in a vintage aesthetic with postal stamp and handwritten script signature.
-   - Sincere appreciation for the good times and laughter, wishing her happiness and success in the year ahead.
+3. **The Upbeat Birthday Card**:
+   - A clean, modern celebratory card wishing her an awesome birthday full of great food, good music, lots of laughs, and plenty of cake.
+   - Lighthearted, friendly, and zero emotional pressure.
 
-4. **Floating Sky Lanterns**:
-   - Interactive buttons allowing Irene (or you) to release glowing lanterns carrying warm wishes that float gently into the night sky.
+4. **Interactive Celebration Controls**:
+   - Interactive buttons on the card to throw more confetti, release clusters of colorful floating balloons, and toggle music.
 
 5. **Aesthetic Vinyl Music Player**:
    - Floating widget at the top-right corner.

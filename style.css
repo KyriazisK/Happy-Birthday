@@ -451,20 +451,21 @@ html, body {
 
 .cake {
   position: relative;
-  width: 250px;
-  height: 200px;
+  width: 280px;
+  min-height: 220px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
+  padding-bottom: 8px;
 }
 
 .cake-plate {
   position: absolute;
-  bottom: -10px;
+  bottom: 0px;
   width: 290px;
-  height: 20px;
+  height: 18px;
   background: linear-gradient(to right, #cfd8dc, #eceff1, #b0bec5);
   border-radius: 50%;
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7);
@@ -473,32 +474,16 @@ html, body {
 
 .layer {
   position: relative;
-  border-radius: 12px 12px 6px 6px;
-  z-index: 2;
-  box-shadow: inset 0 -4px 6px rgba(0, 0, 0, 0.2);
-}
-
-.layer-bottom {
-  width: 230px;
-  height: 60px;
-  background: linear-gradient(to bottom, #d48b96, #b05c6a);
-  border: 2px solid #8e4451;
-}
-
-.layer-middle {
-  width: 175px;
-  height: 52px;
-  background: linear-gradient(to bottom, #fce4ec, #f8bbd0);
-  border: 2px solid #ec407a;
-  border-bottom: none;
+  box-shadow: inset 0 -4px 6px rgba(0, 0, 0, 0.15);
 }
 
 .layer-top {
-  width: 125px;
-  height: 44px;
+  width: 130px;
+  height: 48px;
   background: linear-gradient(to bottom, #fff9c4, #fff176);
   border: 2px solid #fbc02d;
-  border-bottom: none;
+  border-radius: 12px 12px 0 0;
+  z-index: 5;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -506,18 +491,37 @@ html, body {
 
 .cake-topper-text {
   font-family: 'Caveat', cursive;
-  font-size: 22px;
+  font-size: 24px;
   color: #6a4c28;
   font-weight: 700;
 }
 
-/* Candles */
+.layer-middle {
+  width: 185px;
+  height: 52px;
+  background: linear-gradient(to bottom, #fce4ec, #f8bbd0);
+  border: 2px solid #ec407a;
+  border-top: none;
+  z-index: 4;
+}
+
+.layer-bottom {
+  width: 245px;
+  height: 60px;
+  background: linear-gradient(to bottom, #d48b96, #b05c6a);
+  border: 2px solid #8e4451;
+  border-top: none;
+  border-radius: 0 0 6px 6px;
+  z-index: 3;
+}
+
+/* Candles - sit on top layer */
 .candles-row {
-  position: absolute;
-  top: 15px;
+  position: relative;
   display: flex;
   gap: 22px;
   z-index: 10;
+  margin-bottom: -4px;
   cursor: pointer;
 }
 
@@ -628,7 +632,7 @@ html, body {
 }
 
 /* ==========================================================================
-   STEP 3: The Birthday Card & Heartfelt Letter
+   STEP 3: The Birthday Card & Upbeat Celebration
    ========================================================================== */
 .letter-card-wrapper {
   width: 100%;
@@ -637,10 +641,10 @@ html, body {
 .letter-card {
   background: var(--paper-cream);
   color: var(--text-main);
-  border-radius: 16px;
-  padding: clamp(28px, 6vw, 55px);
+  border-radius: 18px;
+  padding: clamp(26px, 5vw, 45px);
   text-align: left;
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7), 0 0 40px rgba(246, 211, 101, 0.15);
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.65), 0 0 35px rgba(246, 211, 101, 0.15);
   border: 1px solid var(--paper-border);
   position: relative;
   overflow: hidden;
@@ -658,8 +662,8 @@ html, body {
 
 .letter-header {
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  padding-bottom: 20px;
-  margin-bottom: 25px;
+  padding-bottom: 18px;
+  margin-bottom: 22px;
   position: relative;
 }
 
@@ -693,39 +697,40 @@ html, body {
   text-transform: uppercase;
   letter-spacing: 2px;
   color: #9c8a79;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .letter-recipient {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(28px, 5vw, 36px);
+  font-size: clamp(26px, 4.5vw, 34px);
   font-weight: 700;
   color: #1a162b;
 }
 
 .letter-body {
-  font-size: clamp(15px, 2.5vw, 17px);
-  line-height: 1.8;
+  font-size: clamp(15px, 2.2vw, 17px);
+  line-height: 1.75;
   color: #3d3731;
 }
 
 .letter-p {
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
 
-.letter-p strong {
-  color: #111;
+.letter-p.highlight-p {
   font-size: 1.15em;
+  font-weight: 600;
+  color: #1a162b;
 }
 
 .letter-p.closing {
-  font-style: italic;
+  font-weight: 500;
   color: #2c2520;
 }
 
 .letter-footer {
-  margin-top: 30px;
-  padding-top: 20px;
+  margin-top: 24px;
+  padding-top: 16px;
   border-top: 1px dashed rgba(0,0,0,0.12);
 }
 
@@ -742,73 +747,56 @@ html, body {
   font-weight: 500;
 }
 
-/* Lantern Section */
-.lantern-section {
-  margin-top: 35px;
-  background: #f0ebe1;
+/* Fun Celebration Buttons */
+.fun-actions-section {
+  margin-top: 28px;
+  background: #f3eee6;
   border-radius: 12px;
-  padding: 22px;
-  border: 1px solid #e2d7c5;
+  padding: 18px 20px;
+  border: 1px solid #e5dac9;
 }
 
-.lantern-badge {
-  display: inline-block;
-  font-size: 11px;
+.fun-actions-title {
+  font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
-  background: #dfcfb7;
-  color: #554433;
-  padding: 4px 10px;
-  border-radius: 12px;
-  margin-bottom: 6px;
+  color: #7d6b5c;
+  margin-bottom: 12px;
 }
 
-.lantern-intro p {
-  font-size: 14px;
-  color: #615245;
-  margin-bottom: 14px;
-}
-
-.lantern-actions {
+.fun-buttons-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 10px;
 }
 
-.lantern-btn {
+.fun-btn {
   background: #fff;
   border: 1px solid #d4c5ae;
-  padding: 8px 14px;
-  border-radius: 20px;
+  padding: 9px 16px;
+  border-radius: 25px;
   font-family: inherit;
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 600;
   color: #4a3c30;
   cursor: pointer;
   transition: all 0.25s ease;
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
 }
 
-.lantern-btn:hover {
+.fun-btn:hover {
   background: var(--gold-primary);
   border-color: var(--gold-primary);
   color: #1a162b;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(246, 211, 101, 0.4);
-}
-
-.lantern-counter {
-  margin-top: 12px;
-  font-size: 12px;
-  color: #8c7866;
-  font-style: italic;
+  box-shadow: 0 4px 14px rgba(246, 211, 101, 0.4);
 }
 
 .action-footer {
-  margin-top: 30px;
+  margin-top: 25px;
   text-align: center;
 }
 
@@ -829,25 +817,54 @@ html, body {
 }
 
 /* ==========================================================================
-   Sky Lantern Floating Effect
+   Floating Balloons Animation
    ========================================================================== */
-#skyLanternsContainer {
+#balloonsContainer {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
   pointer-events: none;
-  z-index: 5;
+  z-index: 6;
   overflow: hidden;
 }
 
-.sky-lantern {
+.floating-balloon {
   position: absolute;
-  bottom: -80px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  bottom: -100px;
+  width: 44px;
+  height: 56px;
+  border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+  animation: floatUpBalloon 8s linear forwards;
+  pointer-events: none;
+  box-shadow: inset -4px -4px 8px rgba(0,0,0,0.15), 0 4px 15px rgba(0,0,0,0.25);
+}
+
+.floating-balloon::after {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 16px;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+@keyframes floatUpBalloon {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translateY(-55vh) rotate(8deg);
+  }
+  100% {
+    transform: translateY(-115vh) rotate(-8deg);
+    opacity: 0;
+  }
+}
   animation: floatLantern 12s linear forwards;
   pointer-events: none;
 }

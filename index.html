@@ -47,9 +47,9 @@
     <!-- STEP 1: The Sealed Envelope -->
     <section class="step-section active" id="stepEnvelope">
       <div class="envelope-intro">
-        <span class="sparkle-badge">✨ October Special ✨</span>
-        <h1 class="glow-title">A Little Something for Irene</h1>
-        <p class="envelope-subtitle">Delivered across time and space, just for your special day.</p>
+        <span class="sparkle-badge">🎂 Birthday Delivery 🎂</span>
+        <h1 class="glow-title">A Birthday Surprise for Irene</h1>
+        <p class="envelope-subtitle">A little celebration made just for your special day ✨</p>
       </div>
 
       <div class="envelope-wrapper" id="envelopeWrapper">
@@ -57,7 +57,7 @@
           <div class="envelope-back"></div>
           
           <div class="letter-peek" id="letterPeek">
-            <span class="peek-text">Open Me</span>
+            <span class="peek-text">Open Me 🎉</span>
           </div>
 
           <div class="envelope-pocket"></div>
@@ -79,27 +79,13 @@
     <section class="step-section" id="stepCake">
       <div class="cake-intro">
         <h2 class="section-title">Make a Wish, Irene 🎂</h2>
-        <p class="section-desc" id="cakeHint">Close your eyes, think of something you truly wish for, and tap the candles to blow them out!</p>
+        <p class="section-desc" id="cakeHint">Make a quick wish and blow out the candles!</p>
       </div>
 
       <div class="cake-container" id="cakeContainer">
-        <!-- The 3D CSS Birthday Cake -->
+        <!-- The 3D CSS Birthday Cake (Right side up: Smallest on top, Widest on bottom) -->
         <div class="cake">
-          <!-- Plate -->
-          <div class="cake-plate"></div>
-
-          <!-- Cake Layers -->
-          <div class="layer layer-bottom">
-            <div class="frosting-drips"></div>
-          </div>
-          <div class="layer layer-middle">
-            <div class="frosting-drips"></div>
-          </div>
-          <div class="layer layer-top">
-            <div class="cake-topper-text">Irene</div>
-          </div>
-
-          <!-- Candles -->
+          <!-- Candles on top -->
           <div class="candles-row" id="candlesRow">
             <div class="candle" data-index="1">
               <div class="candle-stick"></div>
@@ -120,6 +106,24 @@
               <div class="smoke"></div>
             </div>
           </div>
+
+          <!-- Layer 1: Top / Smallest -->
+          <div class="layer layer-top">
+            <div class="cake-topper-text">Irene</div>
+          </div>
+
+          <!-- Layer 2: Middle / Medium -->
+          <div class="layer layer-middle">
+            <div class="frosting-drips"></div>
+          </div>
+
+          <!-- Layer 3: Bottom / Widest -->
+          <div class="layer layer-bottom">
+            <div class="frosting-drips"></div>
+          </div>
+
+          <!-- Plate at the bottom -->
+          <div class="cake-plate"></div>
         </div>
 
         <button class="blow-btn" id="blowBtn">
@@ -128,66 +132,55 @@
       </div>
     </section>
 
-    <!-- STEP 3: The Birthday Card & Heartfelt Letter -->
+    <!-- STEP 3: The Birthday Card (Fun, upbeat & casual) -->
     <section class="step-section" id="stepLetter">
       <div class="letter-card-wrapper">
         <div class="letter-card">
-          <!-- Elegant Letter Header -->
+          <!-- Card Header -->
           <div class="letter-header">
             <div class="stamp-box">
-              <span class="stamp-icon">🕊️</span>
-              <span class="stamp-date">Happy Birthday</span>
+              <span class="stamp-icon">🎉</span>
+              <span class="stamp-date">Party Time</span>
             </div>
-            <div class="letter-pre-title">Warmest wishes on your day</div>
-            <h2 class="letter-recipient">Dearest Irene,</h2>
+            <div class="letter-pre-title">Cheers to your day</div>
+            <h2 class="letter-recipient">Happy Birthday, Irene! 🎂</h2>
           </div>
 
-          <!-- Letter Body -->
+          <!-- Card Body -->
           <div class="letter-body">
-            <p class="letter-p">
-              <strong>Happy Birthday! 🎉</strong>
+            <p class="letter-p highlight-p">
+              Wishing you an awesome birthday! 🥳✨
             </p>
             <p class="letter-p">
-              I wanted to take a moment today to send a little sunshine your way and wish you the very happiest of birthdays.
+              Hope you have a fantastic day celebrating with great food, good music, lots of laughs, and plenty of cake!
             </p>
             <p class="letter-p">
-              Even though time and life have moved forward since we last talked, I genuinely look back on the conversations, laughs, and moments we shared with a big smile. You are someone truly special, bright, and memorable, and you brought real warmth and energy into those days.
-            </p>
-            <p class="letter-p">
-              As you turn this new page and step into another year of your life, I hope it brings you everything you’ve been hoping for — exciting new adventures, peace of mind, endless reasons to laugh, and people around you who cherish you for the wonderful soul you are.
-            </p>
-            <p class="letter-p">
-              May today be overflowing with your favorite music, great food, sweet surprises, and all the love you deserve.
+              May this new year bring you exciting new adventures, fun times, and great success in everything you do.
             </p>
             <p class="letter-p closing">
-              Wishing you nothing but genuine happiness, health, and success — today and always.
+              Have an amazing celebration today! 🥂🎈
             </p>
           </div>
 
-          <!-- Letter Footer -->
+          <!-- Card Footer -->
           <div class="letter-footer">
-            <p class="handwritten-sign">With all my best wishes,</p>
-            <p class="signature-tag">Always rooting for you ✨</p>
+            <p class="handwritten-sign">Cheers,</p>
+            <p class="signature-tag">Have the best day! ✨</p>
           </div>
 
-          <!-- Interactive Lanterns / Wishes Feature -->
-          <div class="lantern-section">
-            <div class="lantern-intro">
-              <span class="lantern-badge">Release a Sky Lantern</span>
-              <p>Click below to send a glowing birthday wish into the night sky for Irene:</p>
+          <!-- Fun Celebration Triggers -->
+          <div class="fun-actions-section">
+            <p class="fun-actions-title">Send a Birthday Vibe:</p>
+            <div class="fun-buttons-grid">
+              <button class="fun-btn" id="btnConfetti">🎉 More Confetti!</button>
+              <button class="fun-btn" id="btnBalloons">🎈 Release Balloons</button>
+              <button class="fun-btn" id="btnMusic">🎵 Birthday Melody</button>
             </div>
-            <div class="lantern-actions">
-              <button class="lantern-btn" data-wish="May your year be full of magic and peace ✨">🌟 Peace & Calm</button>
-              <button class="lantern-btn" data-wish="May you achieve every dream you're chasing 🚀">💫 Big Dreams</button>
-              <button class="lantern-btn" data-wish="May laughter and joy find you every single day 💛">✨ Pure Joy</button>
-              <button class="lantern-btn" data-wish="May wonderful adventures and good people surround you 🌸">🍃 Beautiful Days</button>
-            </div>
-            <div class="lantern-counter" id="lanternCounter">0 lanterns floating in the sky</div>
           </div>
 
           <!-- Replay Button -->
           <div class="action-footer">
-            <button class="restart-btn" id="restartBtn">↺ Relive from the Start</button>
+            <button class="restart-btn" id="restartBtn">↺ Relive the Cake & Candles</button>
           </div>
 
         </div>
@@ -196,8 +189,8 @@
 
   </main>
 
-  <!-- Floating Sky Lanterns Container -->
-  <div id="skyLanternsContainer"></div>
+  <!-- Floating Balloons Container -->
+  <div id="balloonsContainer"></div>
 
   <script src="script.js"></script>
 </body>

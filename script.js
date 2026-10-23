@@ -370,7 +370,7 @@ document.addEventListener('DOMContentLoaded', () => {
     cakeCompleted = true;
 
     playChimeEffect();
-    cakeHint.textContent = "Your wish is cast into the stars, Irene! ✨";
+    cakeHint.textContent = "Happy Birthday, Irene! 🎂✨";
     cakeHint.style.color = "#f6d365";
     blowBtn.style.display = 'none';
 
@@ -379,7 +379,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     setTimeout(() => {
       goToStep(stepCake, stepLetter);
-    }, 2200);
+    }, 2000);
   }
 
   function triggerCelebrationConfetti() {
@@ -422,50 +422,57 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* --- Step 3: Sky Lanterns & Wishes --- */
-  const lanternBtns = document.querySelectorAll('.lantern-btn');
-  const skyLanternsContainer = document.getElementById('skyLanternsContainer');
-  const lanternCounter = document.getElementById('lanternCounter');
-  let totalLanterns = 0;
+  /* --- Step 3: Fun Celebration Actions --- */
+  const btnConfetti = document.getElementById('btnConfetti');
+  const btnBalloons = document.getElementById('btnBalloons');
+  const btnMusic = document.getElementById('btnMusic');
+  const balloonsContainer = document.getElementById('balloonsContainer');
 
-  lanternBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const wish = btn.getAttribute('data-wish');
-      launchSkyLantern(wish);
-      playTone(880, 0.4, 'sine');
-
-      totalLanterns++;
-      lanternCounter.textContent = `${totalLanterns} lantern${totalLanterns === 1 ? '' : 's'} floating in the sky ✨`;
-
-      // Sparkle on button
-      btn.style.transform = 'scale(0.95)';
-      setTimeout(() => (btn.style.transform = ''), 200);
+  if (btnConfetti) {
+    btnConfetti.addEventListener('click', () => {
+      triggerCelebrationConfetti();
+      playChimeEffect();
     });
-  });
+  }
 
-  function launchSkyLantern(wishText) {
-    const lantern = document.createElement('div');
-    lantern.className = 'sky-lantern';
+  if (btnMusic) {
+    btnMusic.addEventListener('click', () => {
+      toggleMusic();
+    });
+  }
 
-    // Random horizontal position across screen
-    const xPos = Math.random() * 75 + 10;
-    lantern.style.left = `${xPos}vw`;
+  const balloonColors = [
+    'linear-gradient(135deg, #ff8da1, #ff5376)',
+    'linear-gradient(135deg, #f6d365, #fda085)',
+    'linear-gradient(135deg, #a1c4fd, #c2e9fb)',
+    'linear-gradient(135deg, #d4fc79, #96e6a1)',
+    'linear-gradient(135deg, #e0c3fc, #8ec5fc)'
+  ];
 
-    // Slight duration variance
-    const duration = Math.random() * 4 + 10;
-    lantern.style.animationDuration = `${duration}s`;
+  function launchBalloonCluster() {
+    for (let i = 0; i < 7; i++) {
+      setTimeout(() => {
+        const balloon = document.createElement('div');
+        balloon.className = 'floating-balloon';
+        balloon.style.left = `${Math.random() * 85 + 5}vw`;
+        balloon.style.background = balloonColors[Math.floor(Math.random() * balloonColors.length)];
+        const duration = Math.random() * 3 + 6;
+        balloon.style.animationDuration = `${duration}s`;
 
-    lantern.innerHTML = `
-      <div class="lantern-body-glow"></div>
-      <div class="lantern-wish-text">${wishText}</div>
-    `;
+        balloonsContainer.appendChild(balloon);
 
-    skyLanternsContainer.appendChild(lantern);
+        setTimeout(() => {
+          balloon.remove();
+        }, duration * 1000);
+      }, i * 180);
+    }
+  }
 
-    // Remove from DOM after floating away
-    setTimeout(() => {
-      lantern.remove();
-    }, duration * 1000);
+  if (btnBalloons) {
+    btnBalloons.addEventListener('click', () => {
+      launchBalloonCluster();
+      playTone(784, 0.3, 'sine');
+    });
   }
 
   /* --- Reset / Relive Experience --- */
@@ -476,7 +483,7 @@ document.addEventListener('DOMContentLoaded', () => {
     cakeCompleted = false;
     candles.forEach(c => c.classList.remove('blown'));
     blowBtn.style.display = 'flex';
-    cakeHint.textContent = "Close your eyes, think of something you truly wish for, and tap the candles to blow them out!";
+    cakeHint.textContent = "Make a quick wish and blow out the candles!";
     cakeHint.style.color = "";
 
     // Reset envelope state
@@ -484,12 +491,12 @@ document.addEventListener('DOMContentLoaded', () => {
     waxSeal.classList.remove('broken');
     envelope.classList.remove('open');
 
-    // Go back to start
+    // Go back to cake directly or start
     stepLetter.classList.remove('active');
     stepLetter.style.opacity = '0';
-    stepEnvelope.classList.add('active');
-    stepEnvelope.style.opacity = '1';
-    stepEnvelope.style.transform = 'translateY(0)';
+    stepCake.classList.add('active');
+    stepCake.style.opacity = '1';
+    stepCake.style.transform = 'translateY(0)';
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
