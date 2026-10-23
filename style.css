@@ -632,82 +632,104 @@ html, body {
 }
 
 /* ==========================================================================
-   STEP 3: The Birthday Card & Upbeat Celebration (Compact & Minimal)
+   STEP 3: Minimalist Gold Glowing Script on Sleek Glass
    ========================================================================== */
-.letter-card-wrapper {
+.glass-card-wrapper {
   width: 100%;
-  max-width: 440px;
+  max-width: 480px;
 }
 
-.letter-card.compact-card {
-  background: var(--paper-cream);
-  color: var(--text-main);
-  border-radius: 18px;
-  padding: 26px 24px 22px;
-  text-align: center;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.65), 0 0 30px rgba(246, 211, 101, 0.15);
-  border: 1px solid var(--paper-border);
+.glass-card {
   position: relative;
-  overflow: hidden;
+  background: rgba(20, 18, 36, 0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(246, 211, 101, 0.35);
+  border-radius: 24px;
+  padding: 42px 28px 30px;
+  text-align: center;
+  box-shadow: 
+    0 25px 60px rgba(0, 0, 0, 0.7), 
+    0 0 35px rgba(246, 211, 101, 0.15),
+    inset 0 1px 1px rgba(255, 255, 255, 0.2);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-.letter-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 5px;
-  background: linear-gradient(90deg, var(--gold-primary), var(--gold-secondary), #ff8da1);
+.glass-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 
+    0 30px 70px rgba(0, 0, 0, 0.8), 
+    0 0 45px rgba(246, 211, 101, 0.25),
+    inset 0 1px 1px rgba(255, 255, 255, 0.3);
 }
 
-.compact-header {
-  margin-bottom: 14px;
+.glass-sparkle {
+  font-size: 13px;
+  letter-spacing: 12px;
+  color: var(--gold-primary);
+  margin-bottom: 12px;
+  opacity: 0.9;
+  animation: sparkleTwinkle 2.5s infinite ease-in-out alternate;
 }
 
-.compact-header .letter-recipient {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(23px, 4.5vw, 28px);
-  font-weight: 700;
-  color: #1a162b;
+@keyframes sparkleTwinkle {
+  0% { opacity: 0.5; transform: scale(0.95); }
+  100% { opacity: 1; transform: scale(1.05); }
 }
 
-.compact-body {
-  font-size: clamp(14px, 2.5vw, 16px);
-  line-height: 1.65;
-  color: #443c36;
+.gold-script-text {
+  font-family: 'Alex Brush', cursive;
+  font-size: clamp(38px, 8.5vw, 54px);
+  font-weight: 400;
+  line-height: 1.25;
+  margin-bottom: 24px;
+  background: linear-gradient(135deg, #ffffff 10%, #ffe082 40%, #ffd700 70%, #fda085 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 16px rgba(253, 224, 71, 0.45));
+  animation: glowPulse 3s infinite ease-in-out alternate;
 }
 
-.compact-body .letter-p {
-  margin-bottom: 0;
+@keyframes glowPulse {
+  0% {
+    filter: drop-shadow(0 0 10px rgba(253, 224, 71, 0.35));
+  }
+  100% {
+    filter: drop-shadow(0 0 25px rgba(253, 224, 71, 0.7));
+  }
 }
 
-.compact-footer {
-  margin-top: 14px;
-  padding-top: 10px;
-  border-top: 1px dashed rgba(0,0,0,0.1);
-}
-
-.compact-footer .signature-tag {
-  font-size: 15px;
-  color: #55483e;
-  font-weight: 600;
-}
-
-/* Compact Buttons Grid */
-.compact-grid {
+.glass-actions {
   display: flex;
   justify-content: center;
-  gap: 8px;
-  margin-top: 18px;
+  align-items: center;
+  gap: 10px;
 }
 
-.compact-grid .fun-btn {
-  background: #fff;
-  border: 1px solid #d4c5ae;
-  padding: 7px 14px;
+.glass-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(246, 211, 101, 0.25);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  padding: 8px 18px;
   border-radius: 20px;
-  font-family: inherit;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.glass-btn:hover {
+  background: rgba(246, 211, 101, 0.2);
+  border-color: rgba(246, 211, 101, 0.6);
+  color: #f6d365;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(246, 211, 101, 0.3);
+}
   font-size: 12px;
   font-weight: 600;
   color: #4a3c30;
