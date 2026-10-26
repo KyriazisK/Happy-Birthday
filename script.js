@@ -238,6 +238,11 @@ document.addEventListener('DOMContentLoaded', () => {
   function playMelodySequence(noteIndex = 0) {
     if (!isPlayingMusic) return;
 
+    // If audio context is suspended, don't desync notes; wait for resume
+    if (audioCtx && audioCtx.state === 'suspended') {
+      return;
+    }
+
     if (noteIndex >= birthdayScore.length) {
       melodyTimeout = setTimeout(() => playMelodySequence(0), 1800);
       return;
@@ -260,34 +265,40 @@ document.addEventListener('DOMContentLoaded', () => {
   const musicHint = document.getElementById('musicHint');
 
   function startMusic() {
-    if (isPlayingMusic) return;
     isPlayingMusic = true;
     vinylRecord.classList.add('playing');
     toneArm.classList.add('playing');
     musicHint.textContent = 'Playing ♫';
 
-    const ctx = getAudioContext();
-    if (ctx.state === 'suspended') {
-      ctx.resume().catch(() => {});
-    }
-
     if (customAudio && useCustomAudio) {
       customAudio.play().catch(() => {
         useCustomAudio = false;
-        playMelodySequence(0);
+        startSynthMelody();
       });
     } else {
+      startSynthMelody();
+    }
+  }
+
+  function startSynthMelody() {
+    const ctx = getAudioContext();
+    if (ctx.state === 'suspended') {
+      ctx.resume().then(() => {
+        clearTimeout(melodyTimeout);
+        playMelodySequence(0);
+      }).catch(() => {});
+    } else {
+      clearTimeout(melodyTimeout);
       playMelodySequence(0);
     }
   }
 
   function pauseMusic() {
-    if (!isPlayingMusic) return;
     isPlayingMusic = false;
+    clearTimeout(melodyTimeout);
     if (customAudio && useCustomAudio) {
       customAudio.pause();
     }
-    clearTimeout(melodyTimeout);
     vinylRecord.classList.remove('playing');
     toneArm.classList.remove('playing');
     musicHint.textContent = 'Tap to Play ♫';
@@ -306,17 +317,21 @@ document.addEventListener('DOMContentLoaded', () => {
   // 1. Attempt immediate autoplay when page opens
   startMusic();
 
-  // 2. Fallback: If browser autoplay policy requires user gesture,
-  // automatically start on the very first touch/click/scroll anywhere on the screen
-  const autoUnlockEvents = ['click', 'touchstart', 'pointerdown', 'keydown'];
+  // 2. Global unlock: If browser initially suspended audio before user gesture,
+  // resume and play melody on the very first touch/click anywhere on the screen
+  const autoUnlockEvents = ['click', 'touchstart', 'touchend', 'pointerdown', 'keydown'];
   function onFirstUserGesture() {
-    const ctx = getAudioContext();
-    if (ctx.state === 'suspended') {
-      ctx.resume();
-    }
-    if (!isPlayingMusic) {
+    if (audioCtx && audioCtx.state === 'suspended') {
+      audioCtx.resume().then(() => {
+        if (isPlayingMusic) {
+          clearTimeout(melodyTimeout);
+          playMelodySequence(0);
+        }
+      }).catch(() => {});
+    } else if (!isPlayingMusic) {
       startMusic();
     }
+
     autoUnlockEvents.forEach(evt => {
       window.removeEventListener(evt, onFirstUserGesture, { capture: true });
       document.removeEventListener(evt, onFirstUserGesture, { capture: true });
@@ -467,19 +482,12 @@ document.addEventListener('DOMContentLoaded', () => {
   /* --- Step 3: Fun Celebration Actions --- */
   const btnConfetti = document.getElementById('btnConfetti');
   const btnBalloons = document.getElementById('btnBalloons');
-  const btnMusic = document.getElementById('btnMusic');
   const balloonsContainer = document.getElementById('balloonsContainer');
 
   if (btnConfetti) {
     btnConfetti.addEventListener('click', () => {
       triggerCelebrationConfetti();
       playChimeEffect();
-    });
-  }
-
-  if (btnMusic) {
-    btnMusic.addEventListener('click', () => {
-      toggleMusic();
     });
   }
 
