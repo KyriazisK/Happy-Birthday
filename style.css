@@ -515,13 +515,14 @@ html, body {
   z-index: 3;
 }
 
-/* Candles - sit on top layer */
+/* Candles - sit upright on top layer */
 .candles-row {
   position: relative;
   display: flex;
+  align-items: flex-end;
   gap: 18px;
   z-index: 10;
-  margin-bottom: -4px;
+  margin-bottom: -3px;
   cursor: pointer;
 }
 
@@ -530,6 +531,7 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-end;
   cursor: pointer;
   transition: transform 0.2s ease;
 }
@@ -538,44 +540,27 @@ html, body {
   transform: scale(1.08);
 }
 
-.candle-stick {
-  width: 10px;
-  height: 38px;
-  background: repeating-linear-gradient(
-    45deg,
-    #ffffff,
-    #ffffff 4px,
-    #ff4081 4px,
-    #ff4081 8px
-  );
-  border-radius: 3px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-}
-
-.candle-tall .candle-stick {
-  height: 48px;
-}
-
-.wick {
-  width: 2px;
-  height: 8px;
-  background: #333;
-}
-
-.flame {
-  position: absolute;
-  top: -24px;
+/* Flame at the very top, pointing upwards */
+.flame-container {
+  position: relative;
   width: 14px;
-  height: 24px;
-  background: radial-gradient(ellipse at bottom, #ffffff 10%, #ffeb3b 40%, #ff5722 85%, transparent 100%);
-  border-radius: 50% 50% 20% 20% / 60% 60% 40% 40%;
-  box-shadow: 0 0 20px #ffeb3b, 0 0 35px #ff9800;
+  height: 22px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin-bottom: -1px;
+}
+
+.flame-svg {
+  width: 14px;
+  height: 22px;
+  filter: drop-shadow(0 0 8px #ffeb3b) drop-shadow(0 0 16px #ff9800);
   animation: flameFlicker 1.2s infinite ease-in-out alternate;
   transform-origin: bottom center;
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-.candle.blown .flame {
+.candle.blown .flame-svg {
   opacity: 0;
   transform: scale(0.2) translateY(-10px);
   pointer-events: none;
@@ -583,7 +568,9 @@ html, body {
 
 .smoke {
   position: absolute;
-  top: -20px;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
   width: 6px;
   height: 6px;
   background: rgba(220, 220, 220, 0.8);
@@ -594,6 +581,34 @@ html, body {
 
 .candle.blown .smoke {
   animation: smokeDrift 1.6s forwards ease-out;
+}
+
+/* Wick in the middle, between flame and candle stick */
+.wick {
+  width: 2px;
+  height: 7px;
+  background: #333333;
+  border-radius: 1px 1px 0 0;
+  z-index: 2;
+}
+
+/* Candle Stick at the bottom, standing on the cake */
+.candle-stick {
+  width: 10px;
+  height: 38px;
+  background: repeating-linear-gradient(
+    45deg,
+    #ffffff,
+    #ffffff 4px,
+    #ff4081 4px,
+    #ff4081 8px
+  );
+  border-radius: 2px 2px 0 0;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.candle-tall .candle-stick {
+  height: 48px;
 }
 
 @keyframes flameFlicker {

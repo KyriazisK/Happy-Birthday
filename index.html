@@ -85,25 +85,63 @@
       <div class="cake-container" id="cakeContainer">
         <!-- The 3D CSS Birthday Cake (Right side up: Smallest on top, Widest on bottom) -->
         <div class="cake">
-          <!-- Candles on top -->
+          <!-- Candles on top (Flame on top, Wick in middle, Stick standing on cake) -->
           <div class="candles-row" id="candlesRow">
             <div class="candle" data-index="1">
-              <div class="candle-stick"></div>
+              <div class="flame-container">
+                <svg class="flame-svg" viewBox="0 0 20 32">
+                  <defs>
+                    <radialGradient id="flameGrad1" cx="50%" cy="80%" r="60%">
+                      <stop offset="0%" stop-color="#ffffff" />
+                      <stop offset="30%" stop-color="#fff176" />
+                      <stop offset="65%" stop-color="#ff9800" />
+                      <stop offset="100%" stop-color="#e65100" />
+                    </radialGradient>
+                  </defs>
+                  <path d="M10,0 C14,8 19,16 19,23 C19,28 15,32 10,32 C5,32 1,28 1,23 C1,16 6,8 10,0 Z" fill="url(#flameGrad1)" />
+                </svg>
+                <div class="smoke"></div>
+              </div>
               <div class="wick"></div>
-              <div class="flame"></div>
-              <div class="smoke"></div>
+              <div class="candle-stick"></div>
             </div>
+
             <div class="candle candle-tall" data-index="2">
-              <div class="candle-stick"></div>
+              <div class="flame-container">
+                <svg class="flame-svg" viewBox="0 0 20 32">
+                  <defs>
+                    <radialGradient id="flameGrad2" cx="50%" cy="80%" r="60%">
+                      <stop offset="0%" stop-color="#ffffff" />
+                      <stop offset="30%" stop-color="#fff176" />
+                      <stop offset="65%" stop-color="#ff9800" />
+                      <stop offset="100%" stop-color="#e65100" />
+                    </radialGradient>
+                  </defs>
+                  <path d="M10,0 C14,8 19,16 19,23 C19,28 15,32 10,32 C5,32 1,28 1,23 C1,16 6,8 10,0 Z" fill="url(#flameGrad2)" />
+                </svg>
+                <div class="smoke"></div>
+              </div>
               <div class="wick"></div>
-              <div class="flame"></div>
-              <div class="smoke"></div>
+              <div class="candle-stick"></div>
             </div>
+
             <div class="candle" data-index="3">
-              <div class="candle-stick"></div>
+              <div class="flame-container">
+                <svg class="flame-svg" viewBox="0 0 20 32">
+                  <defs>
+                    <radialGradient id="flameGrad3" cx="50%" cy="80%" r="60%">
+                      <stop offset="0%" stop-color="#ffffff" />
+                      <stop offset="30%" stop-color="#fff176" />
+                      <stop offset="65%" stop-color="#ff9800" />
+                      <stop offset="100%" stop-color="#e65100" />
+                    </radialGradient>
+                  </defs>
+                  <path d="M10,0 C14,8 19,16 19,23 C19,28 15,32 10,32 C5,32 1,28 1,23 C1,16 6,8 10,0 Z" fill="url(#flameGrad3)" />
+                </svg>
+                <div class="smoke"></div>
+              </div>
               <div class="wick"></div>
-              <div class="flame"></div>
-              <div class="smoke"></div>
+              <div class="candle-stick"></div>
             </div>
           </div>
 
