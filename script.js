@@ -131,6 +131,10 @@ document.addEventListener('DOMContentLoaded', () => {
       useCustomAudio = true;
       customAudio = testAudio;
       customAudio.loop = true;
+      if (isPlayingMusic) {
+        clearTimeout(melodyTimeout);
+        customAudio.play().catch(() => {});
+      }
     });
     testAudio.addEventListener('error', () => {
       useCustomAudio = false;
@@ -249,42 +253,80 @@ document.addEventListener('DOMContentLoaded', () => {
     }, duration * 1000);
   }
 
-  // Vinyl widget controls
+  // Vinyl widget controls & Autoplay functions
   const vinylWidget = document.getElementById('vinylWidget');
   const vinylRecord = document.getElementById('vinylRecord');
   const toneArm = document.getElementById('toneArm');
   const musicHint = document.getElementById('musicHint');
 
-  function toggleMusic() {
-    getAudioContext();
-    if (isPlayingMusic) {
-      isPlayingMusic = false;
-      if (customAudio && useCustomAudio) {
-        customAudio.pause();
-      }
-      clearTimeout(melodyTimeout);
-      vinylRecord.classList.remove('playing');
-      toneArm.classList.remove('playing');
-      musicHint.textContent = 'Tap to Play ♫';
-    } else {
-      isPlayingMusic = true;
-      vinylRecord.classList.add('playing');
-      toneArm.classList.add('playing');
-      musicHint.textContent = 'Playing ♫';
+  function startMusic() {
+    if (isPlayingMusic) return;
+    isPlayingMusic = true;
+    vinylRecord.classList.add('playing');
+    toneArm.classList.add('playing');
+    musicHint.textContent = 'Playing ♫';
 
-      if (customAudio && useCustomAudio) {
-        customAudio.play().catch(() => {
-          // Fall back to synth if audio play fails
-          useCustomAudio = false;
-          playMelodySequence(0);
-        });
-      } else {
+    const ctx = getAudioContext();
+    if (ctx.state === 'suspended') {
+      ctx.resume().catch(() => {});
+    }
+
+    if (customAudio && useCustomAudio) {
+      customAudio.play().catch(() => {
+        useCustomAudio = false;
         playMelodySequence(0);
-      }
+      });
+    } else {
+      playMelodySequence(0);
+    }
+  }
+
+  function pauseMusic() {
+    if (!isPlayingMusic) return;
+    isPlayingMusic = false;
+    if (customAudio && useCustomAudio) {
+      customAudio.pause();
+    }
+    clearTimeout(melodyTimeout);
+    vinylRecord.classList.remove('playing');
+    toneArm.classList.remove('playing');
+    musicHint.textContent = 'Tap to Play ♫';
+  }
+
+  function toggleMusic() {
+    if (isPlayingMusic) {
+      pauseMusic();
+    } else {
+      startMusic();
     }
   }
 
   vinylWidget.addEventListener('click', toggleMusic);
+
+  // 1. Attempt immediate autoplay when page opens
+  startMusic();
+
+  // 2. Fallback: If browser autoplay policy requires user gesture,
+  // automatically start on the very first touch/click/scroll anywhere on the screen
+  const autoUnlockEvents = ['click', 'touchstart', 'pointerdown', 'keydown'];
+  function onFirstUserGesture() {
+    const ctx = getAudioContext();
+    if (ctx.state === 'suspended') {
+      ctx.resume();
+    }
+    if (!isPlayingMusic) {
+      startMusic();
+    }
+    autoUnlockEvents.forEach(evt => {
+      window.removeEventListener(evt, onFirstUserGesture, { capture: true });
+      document.removeEventListener(evt, onFirstUserGesture, { capture: true });
+    });
+  }
+
+  autoUnlockEvents.forEach(evt => {
+    window.addEventListener(evt, onFirstUserGesture, { capture: true, passive: true });
+    document.addEventListener(evt, onFirstUserGesture, { capture: true, passive: true });
+  });
 
   /* ==========================================================================
      3. Experience Flow Navigation (Step 1 -> Step 2 -> Step 3)
@@ -312,9 +354,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (envelopeOpened) return;
     envelopeOpened = true;
 
-    // Start music on first interaction if not yet started
+    // Ensure music is active when opening envelope
     if (!isPlayingMusic) {
-      toggleMusic();
+      startMusic();
     }
 
     waxSeal.classList.add('broken');
